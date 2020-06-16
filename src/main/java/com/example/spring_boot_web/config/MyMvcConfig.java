@@ -27,7 +27,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 //                SpringBoot已经做好了静态资源映射
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/first", "/user/login", "/asserts/**", "/templates/**","/webjars/**");
+                .excludePathPatterns("/","/index.html","/first", "/user/login", "/asserts/**", "/templates/**","/webjars/**");
     }
 
 

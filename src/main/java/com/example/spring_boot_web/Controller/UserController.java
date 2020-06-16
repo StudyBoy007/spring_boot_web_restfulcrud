@@ -6,10 +6,7 @@ import com.example.spring_boot_web.entities.Department;
 import com.example.spring_boot_web.entities.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -76,6 +73,34 @@ public class UserController {
     public String addEmployeesTrue(Employee employee) {
         System.out.println(employee);
         employeeDao.save(employee);
+        return "redirect:/user/emps";
+    }
+
+
+    /**
+     * 跳转到修改页面
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/emp/{id}")
+    public String modifyEmployeeInfo(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("emp", employeeDao.get(id));
+        model.addAttribute("departs", departmentDao.getDepartments());
+        return "emp/add";
+    }
+
+
+    @PutMapping("/emp")
+    public String updateEmployeeInfo(Employee employee) {
+        employeeDao.save(employee);
+        return "redirect:/user/emps";
+    }
+
+
+    @DeleteMapping("/emp/{id}")
+    public String deleteEmployeeInfo(@PathVariable("id") Integer id) {
+        employeeDao.delete(id);
         return "redirect:/user/emps";
     }
 
