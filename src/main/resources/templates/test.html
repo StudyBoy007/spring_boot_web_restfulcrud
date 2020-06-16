@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/asserts/css/signin.css}" rel="stylesheet">
+</head>
+<body>
+<h1>我是test页面，测试springboot存在html页面的templates目录</h1>
+<div th:text="${hello}"></div>
+<div th:utext="${hello}"></div>
+<hr/>
+
+
+<h4 th:text="${user}" th:each="user:${users}"></h4>
+<hr/>
+<h4>
+    <span th:each="user:${users}"> [[${user}]] </span>
+</h4>
+
+<img th:src="@{/asserts/img/zz.jpg}" alt="">
+</body>
+</html>
