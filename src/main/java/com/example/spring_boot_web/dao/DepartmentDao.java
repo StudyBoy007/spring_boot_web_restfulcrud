@@ -8,7 +8,6 @@ import com.example.spring_boot_web.entities.Department;
 import org.springframework.stereotype.Repository;
 
 
-
 @Repository
 public class DepartmentDao {
 

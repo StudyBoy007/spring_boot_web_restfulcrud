@@ -1,9 +1,11 @@
-package com.example.spring_boot_web.Controller;
+package com.example.spring_boot_web.controller;
 
+import com.example.spring_boot_web.dao.UserDao;
 import com.example.spring_boot_web.dao.DepartmentDao;
 import com.example.spring_boot_web.dao.EmployeeDao;
 import com.example.spring_boot_web.entities.Department;
 import com.example.spring_boot_web.entities.Employee;
+import com.example.spring_boot_web.entities.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +31,10 @@ public class UserController {
     @Resource
     private DepartmentDao departmentDao;
 
+    @Resource
+    private UserDao userDao;
+
+
     @PostMapping("/login")
     public String login(@RequestParam("username") String username,
                         @RequestParam("password") String password,
@@ -46,6 +52,11 @@ public class UserController {
     public String getAllEmployees(Model model, HttpServletRequest request) {
         Collection<Employee> all = employeeDao.getAll();
         model.addAttribute("employees", all);
+
+
+        if (all.size() == 5) {
+            System.out.println();
+        }
         return "emp/list";
     }
 
@@ -103,6 +114,13 @@ public class UserController {
         employeeDao.delete(id);
         return "redirect:/user/emps";
     }
+
+
+//    @ResponseBody
+//    @RequestMapping("/getUser")
+//    public User getUser() {
+//        return userDao.findDepart(1);
+//    }
 
 
 }

@@ -9,12 +9,14 @@ import com.example.spring_boot_web.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
+
 @Repository
 public class EmployeeDao {
 
 	private static Map<Integer, Employee> employees = null;
 	
-	@Autowired
+	@Resource
 	private DepartmentDao departmentDao;
 	
 	static{

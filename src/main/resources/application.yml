@@ -1,0 +1,64 @@
+bean1:
+  name: tom
+
+
+spring:
+  datasource:
+    url: jdbc:mysql://120.78.71.6:3306/springboot?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+      #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#      #监控统计拦截的filters
+#    aop-patterns: com.javayh.druid.*
+#    web-stat-filter:
+#      enabled: true #是否启用StatFilter默认值true
+#      url-pattern: /*
+#      exclusions: /druid/*,*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico
+#      session-stat-enable: true
+#      session-stat-max-count: 10
+#    stat-view-servlet:
+#      # 是否启用statViewServlet配置
+#      enabled: true
+#      # 访问监控页面
+#      url-pattern: "/druid/*"
+#      # 禁止手动重置监控数据
+#      reset-enable: false
+#      # 设置监控页面的登陆名
+#      login-username: admin
+#      # 设置监控页面的登陆密码
+#      login-password: admin
+
+
+
+mybatis:
+  type-aliases-package: com.example.demo.entity
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+
+
+
+
+
+
+

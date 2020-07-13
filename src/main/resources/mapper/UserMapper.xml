@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--用第三种方式的时候这里的namespace需要对应到具体的接口实现类-->
+<mapper namespace="com.example.spring_boot_web.dao.UserDao">
+
+    <select id="selectPwdByUsername" parameterType="string" resultType="string">
+select password from  user where username=#{username}
+    </select>
+</mapper>
